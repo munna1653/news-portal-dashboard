@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Categories - BCC Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    td[contenteditable="true"] {
+      background-color: #fffde7;
+      border: 1px dashed #ccc;
+    }
+  </style>
+</head>
+    <a href="get-categories.php"></a>
+<body>
+
+<div class="container">
+  <h2 class="mb-4">🗂 Manage Categories</h2>
+
+  <!-- Add Category Form -->
+  <form id="categoryForm" class="form-inline mb-4">
+    <input type="text" class="form-control mr-2" id="newCategory" placeholder="New Category Name" required />
+    <button type="submit" class="btn btn-primary">Add Category</button>
+  </form>
+
+  <!-- Category Table -->
+  <table class="table table-bordered" id="categoryTable">
+    <thead class="thead-dark">
+      <tr>
+        <th style="width: 70%">Category</th>
+        <th style="width: 30%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">National</td>
+        <td>
+          <button class="btn btn-sm btn-success save-btn">Save</button>
+          <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td contenteditable="true">International</td>
+        <td>
+          <button class="btn btn-sm btn-success save-btn">Save</button>
+          <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td contenteditable="true">Sports</td>
+        <td>
+          <button class="btn btn-sm btn-success save-btn">Save</button>
+          <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="admin-dashboard.html" class="btn btn-secondary mt-3">← Back to Dashboard</a>
+</div>
+
+<!-- Scripts -->
+ <script>
+  // Load existing categories
+  function loadCategories() {
+    const saved = JSON.parse(localStorage.getItem("categories")) || [];
+    const tbody = document.querySelector("#categoryTable tbody");
+    tbody.innerHTML = ""; // Clear old
+    saved.forEach(cat => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td contenteditable="true">${cat}</td>
+        <td>
+          <button class="btn btn-sm btn-success save-btn">Save</button>
+          <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+        </td>`;
+      tbody.appendChild(row);
+      attachActions(row);
+    });
+  }
+
+  // Save all categories
+  function saveAllCategories() {
+    const rows = document.querySelectorAll("#categoryTable tbody tr");
+    const categories = [];
+    rows.forEach(row => {
+      categories.push(row.children[0].innerText.trim());
+    });
+    localStorage.setItem("categories", JSON.stringify(categories));
+  }
+
+  // Add new category
+  document.getElementById("categoryForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const categoryName = document.getElementById("newCategory").value.trim();
+    if (!categoryName) return;
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td contenteditable="true">${categoryName}</td>
+      <td>
+        <button class="btn btn-sm btn-success save-btn">Save</button>
+        <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+      </td>`;
+    document.querySelector("#categoryTable tbody").appendChild(row);
+    document.getElementById("newCategory").value = "";
+    attachActions(row);
+    saveAllCategories();
+  });
+
+  function attachActions(row) {
+    row.querySelector(".save-btn").addEventListener("click", () => {
+      saveAllCategories();
+      alert("Category saved!");
+    });
+    row.querySelector(".delete-btn").addEventListener("click", () => {
+      if (confirm("Are you sure?")) {
+        row.remove();
+        saveAllCategories();
+      }
+    });
+  }
+
+  // Init
+  loadCategories();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Add new category
+  document.getElementById("categoryForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const categoryName = document.getElementById("newCategory").value.trim();
+    if (categoryName === "") return;
+
+    const table = document.querySelector("#categoryTable tbody");
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td contenteditable="true">${categoryName}</td>
+      <td>
+        <button class="btn btn-sm btn-success save-btn">Save</button>
+        <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+      </td>`;
+    table.appendChild(row);
+    document.getElementById("newCategory").value = "";
+    attachActions(row);
+  });
+
+  // Attach Save/Delete button actions
+  function attachActions(row) {
+    row.querySelector(".save-btn").addEventListener("click", () => {
+      alert("Category saved! (Demo only)");
+    });
+    row.querySelector(".delete-btn").addEventListener("click", () => {
+      if (confirm("Are you sure to delete this category?")) {
+        row.remove();
+      }
+    });
+  }
+
+  // Apply actions to initial rows
+  document.querySelectorAll("#categoryTable tbody tr").forEach(attachActions);
+</script>
+
+</body>
+</html>

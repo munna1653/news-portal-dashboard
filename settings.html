@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Settings - BCC News Portal</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #f4f6f9;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      padding: 30px;
+      margin: 50px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 6px;
+    }
+    h2 {
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>⚙️ Site Settings</h2>
+  <form id="settingsForm">
+
+    <div class="form-group">
+      <label for="siteName">Site Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="siteName"
+        placeholder="Enter site name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="siteLogo">Site Logo URL</label>
+      <input
+        type="url"
+        class="form-control"
+        id="siteLogo"
+        placeholder="https://example.com/logo.png"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="adminEmail">Admin Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="adminEmail"
+        placeholder="admin@example.com"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="themeColor">Theme Color</label>
+      <input type="color" class="form-control" id="themeColor" value="#007bff" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Settings</button>
+    <a href="admin-dashboard.html" class="btn btn-secondary ml-2">Back to Dashboard</a>
+  </form>
+</div>
+
+<script>
+  // Load settings from localStorage
+  function loadSettings() {
+    const settings = JSON.parse(localStorage.getItem("siteSettings")) || {};
+    if (settings.siteName) document.getElementById("siteName").value = settings.siteName;
+    if (settings.siteLogo) document.getElementById("siteLogo").value = settings.siteLogo;
+    if (settings.adminEmail) document.getElementById("adminEmail").value = settings.adminEmail;
+    if (settings.themeColor) document.getElementById("themeColor").value = settings.themeColor;
+  }
+
+  // Save settings to localStorage
+  document.getElementById("settingsForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const settings = {
+      siteName: document.getElementById("siteName").value.trim(),
+      siteLogo: document.getElementById("siteLogo").value.trim(),
+      adminEmail: document.getElementById("adminEmail").value.trim(),
+      themeColor: document.getElementById("themeColor").value,
+    };
+    localStorage.setItem("siteSettings", JSON.stringify(settings));
+    alert("Settings saved successfully!");
+  });
+
+  // On page load
+  document.addEventListener("DOMContentLoaded", loadSettings);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

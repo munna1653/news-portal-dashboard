@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports News - BCC News</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {background:#f9f9f9; font-family: Arial, sans-serif;}
+    .navbar {background:#111;}
+    .navbar-brand, .nav-link {color:#fff !important;}
+    .nav-link:hover {color:#ffc107 !important;}
+    .page-title {
+      background:#28a745; color:#fff; padding: 30px 0; text-align:center;
+    }
+    .news-card {
+      margin-bottom: 20px; background:#fff; box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .news-card img {
+      height: 200px; object-fit: cover;
+    }
+    footer {
+      background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">BCC News</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="national.html">National</a></li>
+          <li class="nav-item"><a class="nav-link" href="international.html">International</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#">Sports</a></li>
+          <li class="nav-item"><a class="nav-link" href="admin-dashboard.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Title -->
+  <div class="page-title">
+    <h1>Sports News</h1>
+    <p>Live updates from the world of sports</p>
+  </div>
+
+  <!-- Sports News -->
+  <div class="container my-4">
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200?text=Football+Final" alt="Football" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">Champions League Final 2025</h5>
+            <p class="card-text">An epic match between two football giants ends with a dramatic penalty shootout...</p>
+            <a href="#" class="btn btn-sm btn-success">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200?text=Cricket+Series" alt="Cricket" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">India vs Bangladesh: ODI Series Begins</h5>
+            <p class="card-text">The first ODI saw explosive batting from both sides with thrilling moments...</p>
+            <a href="#" class="btn btn-sm btn-success">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200?text=Olympics+Update" alt="Olympics" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">Olympics 2025: New Records Set</h5>
+            <p class="card-text">Athletes from all over the world continue to impress with jaw-dropping performances...</p>
+            <a href="#" class="btn btn-sm btn-success">More Info</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 BCC News | All Rights Reserved
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js

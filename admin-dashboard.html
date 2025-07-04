@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - BCC News</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <style>
+    body {background-color: #f8f9fa;}
+    .sidebar {
+      height: 100vh; background-color: #343a40; padding-top: 20px;
+    }
+    .sidebar a {
+      color: white; display: block; padding: 10px 20px; text-decoration: none;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #495057; color: #ffc107;
+    }
+    .content {padding: 30px;}
+    .card-title {font-weight: bold;}
+    td[contenteditable="true"] {
+      background-color: #fff7d6;
+      border: 1px dashed #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2 sidebar">
+      <h4 class="text-white text-center">📋 Admin</h4>
+      <a href="#" class="active">Dashboard</a>
+      <a href="add-news.html">Add News</a>
+      <a href="all-news.html">All News</a>
+      <a href="categories.html">Categories</a>
+      <a href="users.html">Users</a>
+      <a href="settings.html">Settings</a>
+      <a href="login.html">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 content">
+      <h2>Admin Dashboard</h2>
+      <p>Welcome back, Admin! Here's what's happening today:</p>
+
+      <!-- Summary Cards -->
+      <div class="row mt-4">
+        <div class="col-md-3">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Total News</h5>
+              <p class="card-text display-4" id="totalNews">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Published</h5>
+              <p class="card-text display-4" id="publishedNews">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Pending</h5>
+              <p class="card-text display-4" id="pendingNews">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Users</h5>
+              <p class="card-text display-4" id="totalUsers">5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editable News Table -->
+      <div class="card mt-4">
+        <div class="card-header">
+          Latest News Submissions
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped mb-0" id="newsTable">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td contenteditable="true">Flood hits northern districts</td>
+                <td contenteditable="true">National</td>
+                <td>
+                  <select class="form-control status-select">
+                    <option value="Published" selected>Published</option>
+                    <option value="Pending">Pending</option>
+                  </select>
+                </td>
+                <td contenteditable="true">2025-07-03</td>
+                <td>
+                  <button class="btn btn-sm btn-info save-btn">Save</button>
+                  <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td contenteditable="true">AI Summit in Geneva</td>
+                <td contenteditable="true">International</td>
+                <td>
+                  <select class="form-control status-select">
+                    <option value="Published">Published</option>
+                    <option value="Pending" selected>Pending</option>
+                  </select>
+                </td>
+                <td contenteditable="true">2025-07-02</td>
+                <td>
+                  <button class="btn btn-sm btn-info save-btn">Save</button>
+                  <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function updateDashboardStats() {
+    const rows = document.querySelectorAll("#newsTable tbody tr");
+    let total = 0, published = 0, pending = 0;
+    rows.forEach(row => {
+      total++;
+      const status = row.querySelector(".status-select").value;
+      if (status === "Published") published++;
+      else if (status === "Pending") pending++;
+    });
+
+    document.getElementById("totalNews").textContent = total;
+    document.getElementById("publishedNews").textContent = published;
+    document.getElementById("pendingNews").textContent = pending;
+  }
+
+  function setupTableEvents() {
+    const table = document.getElementById("newsTable");
+
+    table.addEventListener("change", updateDashboardStats);
+    table.addEventListener("click", function(e) {
+      if (e.target.classList.contains("delete-btn")) {
+        const row = e.target.closest("tr");
+        row.remove();
+        updateDashboardStats();
+      }
+
+      if (e.target.classList.contains("save-btn")) {
+        alert("Changes saved! (This is a frontend-only demo)");
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupTableEvents();
+    updateDashboardStats();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add News - BCC Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <style>
+    body {background-color: #f2f2f2;}
+    .container {
+      max-width: 800px;
+      background: white;
+      padding: 30px;
+      margin-top: 50px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {margin-bottom: 30px;}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📰 Add News Article</h2>
+
+  <form id="addNewsForm">
+    <div class="form-group">
+      <label for="title">News Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter news headline" required />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select class="form-control" id="Category" required>
+    <option value="option">-- Select Category --</option>
+        <option>National</option>
+        <option>International</option>
+        <option>Sports</option>
+        <option>Business</option>
+        <option>Culture</option>
+        <option>Travel</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select class="form-control" id="status" required>
+        <option>Published</option>
+        <option>Pending</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input type="url" class="form-control" id="image" placeholder="https://example.com/image.jpg" />
+    </div>
+
+    <div class="form-group">
+      <label for="content">News Content</label>
+      <textarea class="form-control" id="content" rows="6" placeholder="Write full news article here..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit News</button>
+    <a href="admin-dashboard.html" class="btn btn-secondary ml-2">Back to Dashboard</a>
+  </form>
+</div>
+
+<!-- Scripts -->
+ <script>
+  function loadCategoriesFromServer() {
+    fetch("get-categories.php")
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById("category");
+        select.innerHTML = '<option value="">-- Select Category --</option>';
+        data.forEach(cat => {
+          const opt = document.createElement("option");
+          opt.value = cat.name;
+          opt.textContent = cat.name;
+          select.appendChild(opt);
+        });
+      })
+      .catch(err => console.error("Category fetch error", err));
+  }
+
+  document.addEventListener("DOMContentLoaded", loadCategoriesFromServer);
+</script>
+
+ <script>
+  // Load categories into dropdown
+  function loadCategoryOptions() {
+    const saved = JSON.parse(localStorage.getItem("categories")) || [];
+    const categorySelect = document.getElementById("category");
+    categorySelect.innerHTML = '<option value="">-- Select Category --</option>';
+    saved.forEach(cat => {
+      const opt = document.createElement("option");
+      opt.textContent = cat;
+      opt.value = cat;
+      categorySelect.appendChild(opt);
+    });
+  }
+
+  // On page load
+  document.addEventListener("DOMContentLoaded", () => {
+    loadCategoryOptions();
+
+    // Add News form handler
+    document.getElementById('addNewsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const category = document.getElementById('category').value;
+      const status = document.getElementById('status').value;
+      const image = document.getElementById('image').value;
+      const content = document.getElementById('content').value;
+      alert("News Submitted (demo only):\n" + title + " - " + category);
+      this.reset();
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById('addNewsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('status').value;
+    const image = document.getElementById('image').value;
+    const content = document.getElementById('content').value;
+
+    // Display result (for demo only)
+    alert("News added successfully!\n\n" +
+          "Title: " + title + "\n" +
+          "Category: " + category + "\n" +
+          "Status: " + status);
+
+    // Clear form
+    this.reset();
+  });
+</script>
+
+</body>
+</html>

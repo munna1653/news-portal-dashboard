@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BANGLADESH ROAD TO NEWS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <style>
+    /* Custom Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+    }
+    .navbar {
+      background-color: #343a40;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #fff;
+    }
+    .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #ffc107;
+    }
+    .jumbotron {
+      background: url('https://via.placeholder.com/1400x400') center center/cover no-repeat;
+      color: white;
+      height: 400px;
+      position: relative;
+    }
+    .jumbotron .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .jumbotron h1 {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+    }
+    .news-card {
+      background: white;
+      border: none;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .news-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .news-card .card-body {
+      padding: 15px;
+    }
+    footer {
+      background: #343a40;
+      color: #ccc;
+      padding: 20px 0;
+    }
+    footer a {
+      color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">BRT NEWS</a>
+      <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
+        data-target="#navbarNav"><span class="navbar-toggler-icon">☰</span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="National.html">National</a></li>
+          <li class="nav-item"><a class="nav-link" href="International.html">International</a></li>
+          <li class="nav-item"><a class="nav-link" href="sports.html">Sports</a></li>
+          <li class="nav-item"><a class="nav-link" href="entertainment.html">Entertainment</a></li>
+          <li class="nav-item"><a class="nav-link" href="admin-dashboard.html">Admin deshbord</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Jumbotron -->
+  <div class="jumbotron jumbotron-fluid mb-5">
+    <div class="overlay"></div>
+    <div class="container text-center">
+      <h1 class="display-4">Breaking News: NAME!</h1>
+      <p class="lead">Stay tuned for live updates on this ongoing story.</p>
+    </div>
+  </div>
+
+  <!-- Top News Cards -->
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="News 1">
+          <div class="card-body">
+            <h5 class="card-title">Headline 1</h5>
+            <p class="card-text">এক নজরে সংক্ষিপ্ত খবরের সারাংশ এখানে...</p>
+            <a href="#" class="btn btn-sm btn-warning">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="News 2">
+          <div class="card-body">
+            <h5 class="card-title">Headline 2</h5>
+            <p class="card-text">সংক্ষিপ্ত বিবরণ এখানে থাকবে...</p>
+            <a href="#" class="btn btn-sm btn-warning">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="News 3">
+          <div class="card-body">
+            <h5 class="card-title">Headline 3</h5>
+            <p class="card-text">খবরের সারাংশ এখানে দেখুন...</p>
+            <a href="#" class="btn btn-sm btn-warning">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News Grid Section -->
+  <div class="container mb-5">
+    <h2 class="mb-4">Latest News</h2>
+    <div class="row">
+      <!-- Repeat news-card blocks -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card news-card">
+          <img src="https://via.placeholder.com/400x200" alt="News 4">
+          <div class="card-body">
+            <h5 class="card-title">Headline 4</h5>
+            <p class="card-text">খবর সংক্ষিপ্ত বিবরণ এখানে...</p>
+            <a href="#" class="btn btn-sm btn-warning">Read More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; BRT NEWS. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Use</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
