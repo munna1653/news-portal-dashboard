@@ -31,7 +31,8 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.671);
       background-image: url("../news-portal-dashboard/images/oar2.jpg");
-      background-size: cover;
+      background-size: <img src="image.jpg" alt="Example Image" style="width: 300px; height: 200px;">
+;
     }
     .jumbotron h1 {
       position: relative;
@@ -60,10 +61,14 @@
     footer a {
       color: #ffc107;
     }
-    body{
-      background-image: url("../news-portal-dashboard/images/oar2.jpg");
-      background-size: cover;
+    #more{
+      display: none;
     }
+    #abs{
+      margin: 20px;
+      
+    }
+    
   </style>
 </head>
 <body>
@@ -71,7 +76,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">BRT NEWS</a>
+      <a class="navbar-brand" href="#"> THE READ JULAY</a>
       <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
         data-target="#navbarNav"><span class="navbar-toggler-icon">☰</span></button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -111,11 +116,12 @@
       </div>
       <div class="col-md-4">
         <div class="card news-card">
-          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="News 2">
-          <div class="card-body">
-            <h5 class="card-title">Headline 2</h5>
-            <p class="card-text">সংক্ষিপ্ত বিবরণ এখানে থাকবে...</p>
-            <a href="#" class="btn btn-sm btn-warning">Read More</a>
+          <img src="images/oar2.jpg" class="card-img-top" alt="News 2">
+          <div id="abs">
+            <h3>আবু সাঈদ এর ইতিহাশ</h3>
+             <p>আবু সাঈদ (বাংলা: আবু সাঈদ; প্রায় ১৯৯৯ – ১৬ জুলাই ২০২৪) ছিলেন একজন বাংলাদেশী ছাত্র আন্দোলনকারী, যিনি ১৬ জুলাই ২০২৪ তারিখে পুলিশ দ্বারা গুলিবিদ্ধ হয়ে নিহত হন, যখন তিনি ২০২৪ সালের কোটা সংস্কার আন্দোলনে অংশগ্রহণ করছিলেন। সাঈদ বেগম রোকেয়া বিশ্ববিদ্যালয়ের ছাত্র ছিলেন এবং বিশ্ববিদ্যালয়ের সামনে প্রতিবাদে অংশগ্রহণ করছিলেন, যখন পুলিশ লাঠিচার্জ শুরু করে এবং শিক্ষার্থীদের উপর গুলি চালায়।<span id="dots">...</span><span id="more">আবু সাঈদ ২০০১ সালে রংপুরের জেলার পীরগঞ্জ উপজেলার বাবনপুর গ্রামে মকবুল হোসেন ও মনোয়ারা বেগমের ঘরে জন্মগ্রহণ করেন। আবু সাঈদ ছয় ভাই ও তিন বোনের মধ্যে সে সবার ছোট। তিনি স্থানীয় জাফর পাড়া সরকারি প্রাথমিক বিদ্যালয় থেকে পঞ্চম শ্রেণিতে ট্যালেন্টপুলে বৃত্তি পেয়ে উত্তীর্ণ হন। এরপরে স্থানীয় খালাশপীর দ্বিমুখী উচ্চ বিদ্যালয় থেকে গোল্ডেন জি‌পিএ-৫ পে‌য়ে এসএসসি পাশ করেন। এরপর তিনি ২০১৮ সালে রংপুর সরকা‌রি কলে‌জ থেকে জি‌পিএ-৫ পেয়ে এইচএসসি পাশ করেন। পরে তিনি ২০২০ সালে বেগম রোকেয়া বিশ্ববিদ্যালয়ে ইং‌রে‌জি বিভাগে ভ‌র্তি হন।[৬] তিনি তার বিভাগের ১২তম ব্যাচের শিক্ষার্থী ছিলেন।[৭]</span></p>
+
+              <button onclick="myFunction()" id="myBtn">Read more</button> 
           </div>
         </div>
       </div>
@@ -123,7 +129,7 @@
         <div class="card news-card">
           <img src="images/tesgaw.jpg" class="card-img-top" alt="News 3">
           <div class="card-body">
-            <h5 class="card-title">Headline 3</h5>
+            <h5 class="card-title"> Update news 3</h5>
             <p class="card-text">তেজগাঁওয়ে গাড়ি আটকে দেড় কোটি টাকা মূল্যের বিদেশি মুদ্রা ডাকাতিতে ওই প্রতিষ্ঠানের কর্মী জড়িত</p>
             <a href="#" class="btn btn-sm btn-warning">Read More</a>
           </div>
@@ -141,8 +147,8 @@
         <div class="card news-card">
           <img src="images/sawya.jpg" alt="News 4">
           <div class="card-body">
-            <h5 class="card-title">Headline 4</h5>
-            <p class="card-text">খবর সংক্ষিপ্ত বিবরণ এখানে...</p>
+            <h5 class="card-title">news line</h5>
+            <p class="card-text">মালয়েশিয়ায় জঙ্গি সন্দেহে আটক তিনজন ফেরত এসেছে, তাঁদের জিজ্ঞাসাবাদ করা হচ্ছে: আসিফ নজরুল</p>
             <a href="#" class="btn btn-sm btn-warning">Read More</a>
           </div>
         </div>
@@ -166,4 +172,21 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+    function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+} 
+  </script>
 </html>
